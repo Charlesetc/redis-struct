@@ -40,7 +40,11 @@ $redis.get "rstruct:70346137426160:breed" # => "poodle"
 
 ##### Much simpler than vanilla redis
 
-`redis.get('doggy-breed')` vs `doggy.breed`
+`doggy.breed`
+
+vs
+
+`redis.get('doggy-breed')`
 
 
 ##### Initialize with a hash
