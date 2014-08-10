@@ -98,3 +98,15 @@ This automatically requires 'rstruct' and instantiates $redis as Redis.new host:
 Great for fiddling and learning.
 
 ## Contributing
+
+- Fork the Project
+
+- Make an addition; Fix a bug; Do your thing
+
+- Add Tests
+
+- Send me a pull request. I always appreciate help.
+
+## Copywrite
+
+MIT Lisence. See LICENSE.TXT. Feel free to use and share!
