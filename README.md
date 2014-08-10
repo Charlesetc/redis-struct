@@ -21,7 +21,7 @@ icecream.flavor # => "strawberry"
 
 ##### RStruct makes this persistant
 
-Imagine saving an object like this in Redis. That's an RStruct!
+RStruct saves OpenStruct-like data structures in Redis:
 
 ```
 require 'rstruct'
@@ -34,11 +34,13 @@ doggy.breed = 'poodle'
 
 doggy.breed # => "poodle"
 
+$redis.get "rstruct:70346137426160:breed" # => "poodle"
+
 ```
 
-##### Much simpler than generic redis
+##### Much simpler than vanilla redis
 
-Compare `redis.get('doggy-breed')` to `doggy.breed`
+`redis.get('doggy-breed')` vs `doggy.breed`
 
 
 ##### Initialize with a hash
@@ -69,3 +71,16 @@ The prefix, by default 'rstruct', is used in the first part of the database key.
 The suffix must be unique to each instance of RStruct. It's default value is an object id in RStruct's internal workings. 
 
 To access the same RStruct from different scopes, specify the same prefix and suffix in RStruct.new()
+
+
+## RIRB
+
+##### The RStruct Console
+
+Run 'rirb' to open the RStruct console. 
+
+This automatically requires 'rstruct' and instantiates $redis as Redis.new host: 0.0.0.0, port: '6379'.
+
+Great for fiddling and learning.
+
+## Contributing
