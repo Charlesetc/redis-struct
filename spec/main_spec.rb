@@ -1,4 +1,4 @@
-require './rstruct.rb'
+require_relative '../lib/rostruct.rb'
 require 'rspec'
 
 # require 'testrocket'
@@ -20,11 +20,11 @@ puts
 
 
 
-describe	'RStruct' do
+describe	'ROStruct' do
 	
 	before(:each) do
 		
-		@house = RStruct.new({ height: 20, color: 'blue' }, $redis)
+		@house = ROStruct.new({ height: 20, color: 'blue' }, $redis)
 		
 		@house.width = 24
 		
@@ -93,9 +93,9 @@ end
 
 # Testing with Test Rocket
 
-# !-> { 'Testing RStruct functionality' }
+# !-> { 'Testing ROStruct functionality' }
 #
-# House = RStruct.new( {size: 24, color: 'blue'}, $redis )
+# House = ROStruct.new( {size: 24, color: 'blue'}, $redis )
 #
 # House.blue = 'color'
 #

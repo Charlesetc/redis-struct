@@ -1,5 +1,5 @@
 
-# RStruct
+# ROStruct
 ### Syntactical Sugar for the Everyday Rubyist
 
 * Built on OpenStruct
@@ -24,22 +24,22 @@ icecream.flavor # => "strawberry"
 
 ```
 
-##### RStruct makes this persistant
+##### ROStruct makes this persistant
 
-RStruct saves OpenStruct-like data structures in Redis:
+ROStruct (RedisOpenStruct) saves OpenStruct-like data structures in Redis:
 
 ```
-require 'rstruct'
+require 'rostruct'
 
 $redis = Redis.new(:host => '0.0.0.0', :port => '6379')
 
-doggy = RStruct.new($redis)
+doggy = ROStruct.new($redis)
 
 doggy.breed = 'poodle'
 
 doggy.breed # => "poodle"
 
-$redis.get "rstruct:70346137426160:breed" # => "poodle"
+$redis.get "rostruct:70346137426160:breed" # => "poodle"
 
 ```
 
@@ -59,12 +59,12 @@ $redis.get('doggy-breed')
 
 ##### Initialize with a hash
 
-Just like with OpenStructs, you can make new RStructs with a hash:
+Just like with OpenStructs, you can make new ROStructs with a hash:
 
 ```	
 book_plan = { color: 'blue', pages: 365 }
 
-book = RStruct.new(book_plan, $redis)
+book = ROStruct.new(book_plan, $redis)
 
 book.color # => 'blue'
 
@@ -72,30 +72,19 @@ book.color # => 'blue'
 
 ##### Customizable Database Keys
 
-The full parameters of RStruct.new() are as follows: 
+The full parameters of ROStruct.new() are as follows: 
 
 ```
-RStruct.new(hash=nil, prefix = 'rstruct', suffix = nil, database)
+ROStruct.new(hash=nil, prefix = 'rostruct', suffix = nil, database)
 ```
 
-The hash, as you've seen, can be used to initialize an RStruct.
+The hash, as you've seen, can be used to initialize an ROStruct.
 
-The prefix, by default 'rstruct', is used in the first part of the database key. 
+The prefix, by default 'rostruct', is used in the first part of the database key. 
 
-The suffix must be unique to each instance of RStruct. It's default value is an object id in RStruct's internal workings. 
+The suffix must be unique to each instance of ROStruct. It's default value is an object id in ROStruct's internal workings. 
 
-To access the same RStruct from different scopes, specify the same prefix and suffix in RStruct.new()
-
-
-## RIRB
-
-##### The RStruct Console
-
-Run 'rirb' to open the RStruct console. 
-
-This automatically requires 'rstruct' and instantiates $redis as Redis.new host: 0.0.0.0, port: '6379'.
-
-Great for fiddling and learning.
+To access the same ROStruct from different scopes, specify the same prefix and suffix in ROStruct.new()
 
 ## Contributing
 
@@ -109,4 +98,4 @@ Great for fiddling and learning.
 
 ## Copywrite
 
-MIT Lisence. See LICENSE.TXT. Feel free to use and share!
+MIT License. See LICENSE.TXT. Feel free to use and share!

@@ -1,4 +1,4 @@
-require './rstruct.rb'
+require './rostruct.rb'
 
 $redis = Redis.new :host => '0.0.0.0', :port => '6379'
 
@@ -9,6 +9,9 @@ Signal.trap("INT") { puts; break }
 
 # Here's the console for RStruct. 
 # Simple, but good for fiddling.
+
+
+# Used more in development than in production
 
 
 def get_binding

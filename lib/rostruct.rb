@@ -18,9 +18,9 @@ class RedisHash < Hash
 		@suffix = suffix
 	end
 	
-	def config_rstuct(rstruct)
-		@rstruct = rstruct
-	end
+	# def config_rostruct(rostruct)
+	# 	@rostruct = rostruct
+	# end
 	
 	def config_hash(hash)
 		@hash = hash
@@ -88,7 +88,7 @@ class RedisHash < Hash
 	#
 	# private
 	#
-	# # An internal method that uses the name of @rstruct when possible,
+	# # An internal method that uses the name of @rostruct when possible,
 	# # otherwise the RedisHash's object id.
 	# 	def fix
 	# 		begin
@@ -96,7 +96,7 @@ class RedisHash < Hash
 	# 				@fixed = true
 	# 				add_hash
 	# 			end
-	# 			result = @rstruct.very_old_name
+	# 			result = @rostruct.very_old_name
 	# 			# puts 'not rescued'
 	# 		rescue Exception => e
 	# 			p e
@@ -110,7 +110,7 @@ class RedisHash < Hash
 end
 
 
-class RStruct < OpenStruct
+class ROStruct < OpenStruct
 	
 	
 	# This resets unnecessary methods for users'
@@ -134,22 +134,22 @@ class RStruct < OpenStruct
 
 	
 	
-	# An RStruct wraps the OpenStruct class, which uses method_missing
-	# to store values in a hash. Instead, RStruct stores these values
+	# An ROStruct wraps the OpenStruct class, which uses method_missing
+	# to store values in a hash. Instead, ROStruct stores these values
 	# in Redis, providing a pleasant way of interfacing with $redis.
 	#
 	# #When $redis = Redis.new :host => '0.0.0.0', :port => '6379'
-	# example = RStruct.new($redis)
+	# example = ROStruct.new($redis)
 	# 
 	# example.color = 'blue'
 	# 
 	# example.color  # => 'blue'
 	#
-	# The hash will load any data you want into the RStruct, without
+	# The hash will load any data you want into the ROStruct, without
 	# having to iterate over it. And the prefix is what's used to 
 	# store in $redis. Good luck!
 	 
-  def initialize(hash=nil, prefix = 'rstruct', suffix = nil, database)
+  def initialize(hash=nil, prefix = 'rostruct', suffix = nil, database)
     @table = RedisHash.new
 		@table.config_database database
 		@table.config_prefix prefix
@@ -159,7 +159,7 @@ class RStruct < OpenStruct
 		end
 		
 		# Enables the user to load a hash into the database
-		# Hash will be compiled later - once the RStruct's name is known
+		# Hash will be compiled later - once the ROStruct's name is known
 		@table.config_hash hash
 		@table.add_hash if hash
 		
@@ -173,9 +173,13 @@ class RStruct < OpenStruct
 		to_h.to_s
 	end
 	
-	# Rewriting so RStruct#to_h doesn't call RedisHash#dup
+	# Rewriting so ROStruct#to_h doesn't call RedisHash#dup
 	def to_h
 		@table.to_h
+	end
+	
+	def inspect
+		"#<ROStruct : #{to_h}>"
 	end
 	
 end
@@ -185,7 +189,7 @@ end
 
 # Examples
 
-# It's generally better to use an RStruct than make
+# It's generally better to use an ROStruct than make
 # a RedisHash directly. RedisHashes are more adapters
 # than anything else.
 #
@@ -205,7 +209,7 @@ end
 # 
 #
 # 
-# Snowcone = RStruct.new({name: 'blue'}, $redis)
+# Snowcone = ROStruct.new({name: 'blue'}, $redis)
 #
 # Snowcone.class = 'hi'
 #
