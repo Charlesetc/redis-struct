@@ -6,6 +6,11 @@
 * Give persistant properties to variables!
 * Made for Redis
 
+
+
+
+##### OpenStruct Wonder
+
 OpenStruct is a data type in ruby that gives variables infinite setter and getter methods. 
 
 ```
