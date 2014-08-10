@@ -8,7 +8,6 @@
 
 
 
-
 ##### OpenStruct Wonder
 
 OpenStruct is a data type in ruby that gives variables infinite setter and getter methods. 
@@ -85,6 +84,18 @@ The prefix, by default 'rostruct', is used in the first part of the database key
 The suffix must be unique to each instance of ROStruct. It's default value is an object id in ROStruct's internal workings. 
 
 To access the same ROStruct from different scopes, specify the same prefix and suffix in ROStruct.new()
+
+Also note that to include a prefix or suffix without a starting hash you must use nil or an empty hash: `ROStruct.new( nil, 'myprefix', 'mysuffix', $redis )`
+
+## Installation
+
+```
+gem install rostruct
+```
+
+```
+require 'rostruct'
+```
 
 ## Contributing
 
