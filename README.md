@@ -44,10 +44,11 @@ $redis.get "rstruct:70346137426160:breed" # => "poodle"
 doggy.breed
 ```
 
-vs
+vs.
+
 
 ```
-redis.get('doggy-breed')
+$redis.get('doggy-breed')
 ```
 
 
