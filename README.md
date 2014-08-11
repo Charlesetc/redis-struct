@@ -90,7 +90,7 @@ I'm also working on adapters to connect to other database and caching systems.
 
 ## Installation
 
-```ruby
+```bash
 gem install redis-struct
 ```
 
