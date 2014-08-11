@@ -12,7 +12,7 @@
 
 OpenStruct is a data type in ruby that gives variables infinite setter and getter methods. 
 
-```
+```ruby
 require 'ostruct'
 
 icecream = OpenStruct.new()
@@ -26,7 +26,7 @@ icecream.flavor # => "strawberry"
 
 RedisStruct saves OpenStruct-like data structures in Redis:
 
-```
+```ruby
 require 'redis-struct'
 
 $redis = Redis.new(:host => '0.0.0.0', :port => '6379')
@@ -42,14 +42,14 @@ $redis.get "redis_struct:70346137426160:breed" # => "poodle"
 
 ##### Much simpler than vanilla redis
 
-```
+```ruby
 doggy.breed # => "poodle"
 ```
 
 vs.
 
 
-```
+```ruby
 $redis.get('doggy-breed') # => "poodle"
 ```
 
@@ -58,7 +58,7 @@ $redis.get('doggy-breed') # => "poodle"
 
 Just like with OpenStructs, you can make new RedisStructs with a hash:
 
-```	
+```	ruby
 book_plan = { color: 'blue', pages: 365 }
 
 book = RedisStruct.new(book_plan, $redis)
@@ -70,7 +70,7 @@ book.color # => 'blue'
 
 The full parameters of RedisStruct.new():
 
-```
+```ruby
 RedisStruct.new(hash=nil, prefix = 'redis-struct', suffix = nil, database)
 ```
 
@@ -90,11 +90,11 @@ I'm also working on adapters to connect to other database and caching systems.
 
 ## Installation
 
-```
+```ruby
 gem install redis-struct
 ```
 
-```
+```ruby
 require 'redis-struct'
 ```
 
