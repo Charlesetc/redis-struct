@@ -24,7 +24,7 @@ icecream.flavor # => "strawberry"
 
 ##### RedisStruct makes this persistant
 
-RedisStruct (RedisOpenStruct) saves OpenStruct-like data structures in Redis:
+RedisStruct saves OpenStruct-like data structures in Redis:
 
 ```
 require 'redis-struct'
