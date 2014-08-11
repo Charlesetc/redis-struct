@@ -45,14 +45,14 @@ $redis.get "redis_struct:70346137426160:breed" # => "poodle"
 ##### Much simpler than vanilla redis
 
 ```
-doggy.breed
+doggy.breed # => "poodle"
 ```
 
 vs.
 
 
 ```
-$redis.get('doggy-breed')
+$redis.get('doggy-breed') # => "poodle"
 ```
 
 
@@ -66,7 +66,6 @@ book_plan = { color: 'blue', pages: 365 }
 book = RedisStruct.new(book_plan, $redis)
 
 book.color # => 'blue'
-
 ```
 
 ##### Customizable Database Keys
