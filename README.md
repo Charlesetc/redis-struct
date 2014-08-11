@@ -1,5 +1,5 @@
 
-# ROStruct
+# RedisStruct
 ### Syntactical Sugar for the Everyday Rubyist
 
 * Built on OpenStruct
@@ -23,22 +23,22 @@ icecream.flavor # => "strawberry"
 
 ```
 
-##### ROStruct makes this persistant
+##### RedisStruct makes this persistant
 
-ROStruct (RedisOpenStruct) saves OpenStruct-like data structures in Redis:
+RedisStruct (RedisOpenStruct) saves OpenStruct-like data structures in Redis:
 
 ```
-require 'rostruct'
+require 'redis-struct'
 
 $redis = Redis.new(:host => '0.0.0.0', :port => '6379')
 
-doggy = ROStruct.new($redis)
+doggy = RedisStruct.new($redis)
 
 doggy.breed = 'poodle'
 
 doggy.breed # => "poodle"
 
-$redis.get "rostruct:70346137426160:breed" # => "poodle"
+$redis.get "redis_struct:70346137426160:breed" # => "poodle"
 
 ```
 
@@ -58,12 +58,12 @@ $redis.get('doggy-breed')
 
 ##### Initialize with a hash
 
-Just like with OpenStructs, you can make new ROStructs with a hash:
+Just like with OpenStructs, you can make new RedisStructs with a hash:
 
 ```	
 book_plan = { color: 'blue', pages: 365 }
 
-book = ROStruct.new(book_plan, $redis)
+book = RedisStruct.new(book_plan, $redis)
 
 book.color # => 'blue'
 
@@ -71,30 +71,30 @@ book.color # => 'blue'
 
 ##### Customizable Database Keys
 
-The full parameters of ROStruct.new() are as follows: 
+The full parameters of RedisStruct.new() are as follows: 
 
 ```
-ROStruct.new(hash=nil, prefix = 'rostruct', suffix = nil, database)
+RedisStruct.new(hash=nil, prefix = 'redis-struct', suffix = nil, database)
 ```
 
-The hash, as you've seen, can be used to initialize an ROStruct.
+The hash, as you've seen, can be used to initialize an RedisStruct.
 
-The prefix, by default 'rostruct', is used in the first part of the database key. 
+The prefix, by default 'redis_struct', is used in the first part of the database key. 
 
-The suffix must be unique to each instance of ROStruct. It's default value is an object id in ROStruct's internal workings. 
+The suffix must be unique to each instance of RedisStruct. It's default value is an object id in RedisStruct's internal workings. 
 
-To access the same ROStruct from different scopes, specify the same prefix and suffix in ROStruct.new()
+To access the same RedisStruct from different scopes, specify the same prefix and suffix in RedisStruct.new()
 
-Also note that to include a prefix or suffix without a starting hash you must use nil or an empty hash: `ROStruct.new( nil, 'myprefix', 'mysuffix', $redis )`
+Also note that to include a prefix or suffix without a starting hash you must use nil or an empty hash: `RedisStruct.new( nil, 'myprefix', 'mysuffix', $redis )`
 
 ## Installation
 
 ```
-gem install rostruct
+gem install redis-struct
 ```
 
 ```
-require 'rostruct'
+require 'redis-struct'
 ```
 
 ## Contributing

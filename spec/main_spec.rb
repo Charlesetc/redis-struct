@@ -1,10 +1,10 @@
-require_relative '../lib/rostruct.rb'
+require_relative '../lib/redis-struct.rb'
 require 'rspec'
 
 # require 'testrocket'
 
 
-# Testing with Rspec
+# Testing with RSpec
 
 $redis = Redis.new :host => '0.0.0.0', :port => '6379'
 
@@ -20,11 +20,11 @@ puts
 
 
 
-describe	'ROStruct' do
+describe	'RedisStruct' do
 	
 	before(:each) do
 		
-		@house = ROStruct.new({ height: 20, color: 'blue' }, $redis)
+		@house = RedisStruct.new({ height: 20, color: 'blue' }, $redis)
 		
 		@house.width = 24
 		
@@ -93,9 +93,9 @@ end
 
 # Testing with Test Rocket
 
-# !-> { 'Testing ROStruct functionality' }
+# !-> { 'Testing RedisStruct functionality' }
 #
-# House = ROStruct.new( {size: 24, color: 'blue'}, $redis )
+# House = RedisStruct.new( {size: 24, color: 'blue'}, $redis )
 #
 # House.blue = 'color'
 #
