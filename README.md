@@ -66,15 +66,15 @@ book = RedisStruct.new(book_plan, $redis)
 book.color # => 'blue'
 ```
 
-##### Customizable Database Keys
+##### Complete Parameters
 
-The full parameters of RedisStruct.new() are as follows: 
+The full parameters of RedisStruct.new():
 
 ```
 RedisStruct.new(hash=nil, prefix = 'redis-struct', suffix = nil, database)
 ```
 
-The hash, as you've seen, can be used to initialize an RedisStruct.
+The hash, as you've seen, can be used to initialize a RedisStruct.
 
 The prefix, by default 'redis_struct', is used in the first part of the database key. 
 
@@ -83,6 +83,10 @@ The suffix must be unique to each instance of RedisStruct. It's default value is
 To access the same RedisStruct from different scopes, specify the same prefix and suffix in RedisStruct.new()
 
 Also note that to include a prefix or suffix without a starting hash you must use nil or an empty hash: `RedisStruct.new( nil, 'myprefix', 'mysuffix', $redis )`
+
+The database is generally a ruby redis client. Redis is a dependancy of RedisStruct, so don't worry about `require 'redis'`. The database is required. 
+
+I'm also working on adapters to connect to other database and caching systems.
 
 ## Installation
 
