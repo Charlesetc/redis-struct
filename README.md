@@ -20,7 +20,6 @@ icecream = OpenStruct.new()
 icecream.flavor = 'strawberry'
 
 icecream.flavor # => "strawberry"
-
 ```
 
 ##### RedisStruct makes this persistant
@@ -39,7 +38,6 @@ doggy.breed = 'poodle'
 doggy.breed # => "poodle"
 
 $redis.get "redis_struct:70346137426160:breed" # => "poodle"
-
 ```
 
 ##### Much simpler than vanilla redis
