@@ -1,4 +1,4 @@
-require './rostruct.rb'
+require './lib/redis-struct.rb'
 
 $redis = Redis.new :host => '0.0.0.0', :port => '6379'
 
